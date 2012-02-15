@@ -1,0 +1,85 @@
+1/29/11:
+* Changed the Object class to Picture to disambiguate it from python's built-in Object class and to avoid confusion
+* Added documentation to both the main and picture files
+
+2/7/11:
+* Changed default timeout to Incorrect Answer (instead of default Friend)
+* Reduced the amount of time between trials from 3.2 seconds to 2.2 seconds
+* If the subject responds before the first cue, then display a warning message, delay for 5 seconds, and restart the trial
+* Extended end of block feedback to include:
+    -how many friends shot
+    -how many times you were shot
+    -how many enemies let into the base
+* Provided input after RIN for whether the enemy shoots first or not and which enemy/friend item distribution to use
+    -"0 or 1" is asking whether you want the enemy to shoot first on the trials. 0 for no, 1 for yes
+    -"1 to 8" is asking which of the 8 combinations of friend/enemy cues you want to use
+* Added an "experiment complete" screen to the end of the experiment
+* Added art and implementation for additional soldiers
+
+2/9/11:
+* Added SOLDIERTYPES flag to config file to indicate whether more than one soldier should be used
+* Swapped out the backpack for the bucket
+* Took out "Try to respond faster." from the enemy shoots message
+* Changed "RIN" prompt to "Subject Number"
+* Changed "0 or 1" to "a or b": "a" the enemy does not shoot early, "b" he does
+* Added subject number, enemy shoot early condition, and item configuration information to log title
+* Changed early reply message
+* Added space bar to continue between data entry and trials starting
+* Changed block results message
+
+2/18/11:
+* Fixed multiple input at once bug. If both friend and enemy keys are pressed at the same time, only the friend key will be processed now.
+
+2/20-something/11:
+* pycogworks integration
+
+3/1/11:
+* Removed the inputbox class.
+* Determines condition based on args.condition instead of an inputbox.
+* If no args are provided, always does enemy shoots first and randomly picks a set of enemy/friend items
+* Added a junk subject number of -99 if not connected to cogworld
+
+3/11/11:
+* Added log_event helper function to consolidate writing log files whether cogworld is present or not
+* Everything runs at 120 fps as opposed to 500 now. This is also a changeable value FPS in config.txt now
+* Added wait_for_space helper function to save lines of code
+* Added sleep detection if the player doesn't input anything for ASLEEP (in config) consecutive trials that go the full length
+    The keys for getting out of sleep mode are q+p. The next trial will begin after a 2-second delay
+* Feedback now shows soldier with all items present
+* Trials are now all capped at TRIALTIME milliseconds (changeable in config.txt)
+
+3/21/11:
+* Added a tutorial block which can be switched on or off in config.txt by USE_TUTORIAL.
+NOTE: I didn't bother adjusting the logging for the tutorial block since I figure it'll be ignored anyway.
+* Changed the number of blocks from 8 to 6.
+
+3/23/11:
+* Fixed a bug in sleep detection that caused it to only detect sleep once per experiment.
+
+4/8/11:
+* Changed total trial time from 8 seconds to 7.
+* Added two more spoof trials.
+* Space bar is now required between spoof trials
+* Added colors to spoof words to make them stand out even more
+* Correct identifications are rewarded with a shorter trial (as defined by REWARDTIME in config.txt)
+* Added new variables FRIENDBUTTON and ENEMYBUTTON to config.txt to more easily change which buttons to use for input
+* Added accept_input function to save space and make it easier to use in the tutorial block
+* Fixed a bug in accuracy ratio feedback
+* Renamed "tutorial" to "spoof" to avoid confusion
+* Added USE_TRAINING variable to config.txt and implemented training block
+* Quitting while waiting for the space bar is now allowed
+* Quitting while waiting for the experimenter is now allowed
+* Fixed a bug that was causing the friend or enemy status of the soldier to be calculated incorrectly
+
+4/10/11:
+* Added the following boolean variables: SHOOTFIRSTFRIEND, NOSHOOTENEMY, NOSHOOTFRIEND.
+    A value of "True" means that the trial will timeout in that case, otherwise it will wait for input.
+* Added a PUNISHMENTTIME variable to establish a minimum time for how long the subject must wait after an incorrect identification.
+    This is useful for conditions where the subject is given as much time as they please to make a choice
+* Added a SHOOTFIRST variable to config.txt to more easily test the two conditions. This is overridden when a condition is provided
+
+4/18/11:
+* Fixed logging of identifying as enemy
+
+4/19/11:
+* Added messages indicating friend or enemy soldier for training block

@@ -1,0 +1,78 @@
+# Game aspect ratio
+ASPECT = (1024,768)
+FULLSCREEN = True
+
+# Frames per second to run the experiment at
+FPS = 120 # <--- the same as the eyetracker
+
+# Input buttons
+FRIENDBUTTON = pygame.K_f
+ENEMYBUTTON = pygame.K_j
+
+# Eyetracking
+REALTIME_EYETRACKING = False
+DRAW_FIXATION = False
+
+# Number of blocks
+NUMBLOCKS = 4
+
+# Whether or not to use the training and spoof blocks
+# Training blocks show & test subjects on cue identities and groups
+USE_TRAINING = False
+# Spoof blocks demonstrate "majority rules" principle without showing actual cues - just uses "Friend" or "Enemy" words
+USE_SPOOF = False
+
+# Whether the enemy shoots first or not
+# NOTE: this is overridden by the condition of the experiment if one is provided
+SHOOTFIRST = True
+
+# Whether to cut the trial off or not
+SHOOTFIRSTFRIEND = True
+NOSHOOTENEMY = True
+NOSHOOTFRIEND = True
+
+# For more readable indexing purposes in the code
+ARMBAND = 0
+HELD = 1
+HELMET = 2
+
+NUMVARIETIES = 2
+SLOTS = 3
+
+TIMEOUT = NUMVARIETIES + 1
+
+# Define Times (in ms)
+# Define how much time passes between each reveal
+STEPTIME = 1200
+# Define when a trial ends (as far as being able to input)
+ENDTIME = STEPTIME * (SLOTS + 1)
+# Define a constant trial time or give 0 to require input before continuing the experiment
+TRIALTIME = 8000
+# Define how much time passes after a block ends or give 0 to require input before continuing the experiment
+BLOCKPAUSE = 0
+# Number of milliseconds of lockout for a premature identification
+LOCKOUT = 5000
+# Number of milliseconds to wait after a correct identification
+REWARDTIME = 1500
+# Minimum number of milliseconds to wait after an incorrect identification
+PUNISHMENTTIME = 6000
+
+# Varieties of objects
+armbandTypes = ('striped', 'solid')
+heldTypes = ('bag', 'bucket')
+helmetTypes = ('green', 'beige')
+
+# How many consecutive timeouts indicate an asleep subject
+ASLEEP = 3
+
+# Flag determining whether multiple pictures for the soldier should be used
+SOLDIERTYPES = False
+
+# Constants for messages
+MSGOFFSET = 100
+MSGCOLOR = (255,255,255)
+BGCOLOR = (70,70,70)
+MSGBORDER = 20
+
+# End early distribution exponent
+DISTRIBUTION = 2.99
